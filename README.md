@@ -2,7 +2,7 @@
 SpaceShip Game on Windows console. Only works for WINDOWS
 
 
-main: SpaceShipGame
+main: SpaceShipGame.cpp
 
 classes:
 
