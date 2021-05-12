@@ -15,27 +15,27 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\Asteroide.h">
+    <ClInclude Include="..\Asteroid.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="..\Bala.h">
+    <ClInclude Include="..\Bullet.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="..\Nave.h">
+    <ClInclude Include="..\SpaceShip.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\Asteroides.cpp">
+    <ClCompile Include="..\Asteroid.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="..\Bala.cpp">
+    <ClCompile Include="..\Bullet.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="..\JuegoNaves.cpp">
+    <ClCompile Include="..\SpaceShipGame.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="..\Nave.cpp">
+    <ClCompile Include="..\SpaceShip.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>

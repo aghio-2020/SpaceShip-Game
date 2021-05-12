@@ -19,15 +19,15 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\Asteroide.h" />
-    <ClInclude Include="..\Bala.h" />
-    <ClInclude Include="..\Nave.h" />
+    <ClInclude Include="..\Asteroid.h" />
+    <ClInclude Include="..\Bullet.h" />
+    <ClInclude Include="..\SpaceShip.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\Asteroides.cpp" />
-    <ClCompile Include="..\Bala.cpp" />
-    <ClCompile Include="..\JuegoNaves.cpp" />
-    <ClCompile Include="..\Nave.cpp" />
+    <ClCompile Include="..\Asteroid.cpp" />
+    <ClCompile Include="..\Bullet.cpp" />
+    <ClCompile Include="..\SpaceShipGame.cpp" />
+    <ClCompile Include="..\SpaceShip.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

@@ -1,6 +1,6 @@
-﻿  Asteroides.cpp
-  Bala.cpp
-  JuegoNaves.cpp
-  Nave.cpp
+﻿  Asteroid.cpp
+  Bullet.cpp
+  SpaceShipGame.cpp
+  SpaceShip.cpp
   Generando código...
-  Juego Naves.vcxproj -> C:\Users\Ale Ghio\Desktop\Codigo\Juego Naves\Juego Naves\Debug\Juego Naves.exe
+  Juego Naves.vcxproj -> C:\Users\Ale Ghio\Desktop\Codigo\Juego Naves\SpaceShip-Game\Juego Naves\Debug\Juego Naves.exe
