@@ -1,6 +1,7 @@
 # SpaceShip-Game
 SpaceShip Game on Windows console. Only works for WINDOWS
 
+SHOOT WITH f
 
 main: SpaceShipGame.cpp
 
