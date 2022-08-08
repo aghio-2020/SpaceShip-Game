@@ -5,14 +5,14 @@
 #include "Asteroid.h"
 #include "Bullet.h"
 
-/*Each time you shoot, it creates a bullet into a List, and deletes it when y == 4*/
+/*Each time you shoot, it creates a Bullet into a List, and deletes it when y == 4*/
 
-BULLET::BULLET(int px, int py)
+Bullet::Bullet(int px, int py)
 {
 	x = px; y = py;
 }
 
-void BULLET::move()
+void Bullet::move()
 {
 	gotoXY(x, y); printf(" ");
 	if (y > 4) {
@@ -21,7 +21,7 @@ void BULLET::move()
 	}
 }
 
-bool BULLET::out()
+bool Bullet::out()
 {
 	if (y == 4) 
 		return true;

@@ -1,10 +1,12 @@
 #pragma once
 
+#include <vector>
+
 void gotoXY(int, int);
 
-class SHIP {
+class SpaceShip {
 public:
-	SHIP(int, int, int, int);
+	SpaceShip(int, int, int, int);
 	void paint();
 	void erase();
 	void move();
@@ -18,4 +20,7 @@ private:
 	int y;
 	int hearts;
 	int lifes;
+	std::vector<char> keylist;
+
+	void log_keys();
 };

@@ -1,2 +1,3 @@
 C:\Users\Ale Ghio\Desktop\Codigo\Juego Naves\Juego Naves\Release\Juego Naves.exe
 C:\Users\Ale Ghio\Desktop\Codigo\Juego Naves\SpaceShip-Game\Juego Naves\Release\Juego Naves.exe
+D:\src\projects\SpaceShip-Game\Juego Naves\Release\Juego Naves.exe

@@ -10,44 +10,45 @@
 #define RIGHT 77
 #define DOWN 80
 
-SHIP::SHIP(int px, int py, int hea, int life)
+SpaceShip::SpaceShip(int px, int py, int hea, int life)
 {
 	x = px; y = py; hearts = hea; lifes = life;
 }
 
-int SHIP::X() {
+int SpaceShip::X() {
 	return x;
 }
 
-int SHIP::Y() {
+int SpaceShip::Y() {
 	return y;
 }
 
-void SHIP::COR() {
+void SpaceShip::COR() {
 	hearts--;
 }
 
-void SHIP::paint() //ASCII
+void SpaceShip::paint() //ASCII
 {
 	gotoXY(x, y); printf("  %c", 111); 
 	gotoXY(x, y + 1); printf(" %c%c%c", 174, 178, 175);
 	gotoXY(x, y + 2); printf("%c%c %c%c", 60, 223, 223, 62);
 }
 
-void SHIP::erase()
+void SpaceShip::erase()
 {
 	gotoXY(x, y); printf("     ");
 	gotoXY(x, y + 1); printf("     ");
 	gotoXY(x, y + 2); printf("     ");
 }
 
-void SHIP::move()
+void SpaceShip::move()
 {
 	int i = 0;
 	//if coordinates aren't in the space of the game, doesnt move
 	while (i < 2) {
 		if (_kbhit()) { //if a key is pressed (ASCII)
 			char key = _getch();
+			keylist.push_back(key);
 			erase(); //deletes last character
 			if (key == LEFT && x > 3) x--; //75
 			if (key == RIGHT && x + 5 < 77) x++; //77
@@ -61,7 +62,7 @@ void SHIP::move()
 	}
 }
 
-void SHIP::paint_hearts()
+void SpaceShip::paint_hearts()
 {
 	gotoXY(50, 2); printf("LIFES: %d", lifes);
 	gotoXY(64, 2); printf("Health");
@@ -71,7 +72,15 @@ void SHIP::paint_hearts()
 	}
 }
 
-int SHIP::die()  //prints an animation of death
+void SpaceShip::log_keys()
+{
+	for (auto key : keylist)
+	{
+		printf("%c ", key);
+	}
+}
+
+int SpaceShip::die()  //prints an animation of death
 {
 	if (hearts == 0) {
 		erase();
@@ -89,10 +98,13 @@ int SHIP::die()  //prints an animation of death
 
 		lifes--;
 		if (lifes == 0)
-			return -1;
+		{
+			log_keys();
+			return true;
+		}
 		hearts = 3;
 		paint_hearts();
 		paint();
 	}
-	return 0;
+	return false;
 }

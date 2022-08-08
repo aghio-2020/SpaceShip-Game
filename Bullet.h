@@ -2,9 +2,9 @@
 
 void gotoXY(int, int);
 
-class BULLET {
+class Bullet {
 public:
-	BULLET(int, int);
+	Bullet(int, int);
 	void move();
 	bool out();
 	int X() { return x; }

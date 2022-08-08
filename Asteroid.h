@@ -7,7 +7,7 @@ public:
 	AST(int, int);
 	void paint();
 	void move();
-	void collision(class SHIP &N);
+	void collision(class SpaceShip &N);
 	int X() { return x; }
 	void changeX(int _x) { x = _x; }
 	int Y() { return y; }

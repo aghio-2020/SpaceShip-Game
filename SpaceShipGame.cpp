@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<windows.h>
+#include<cstdlib>
 #include<conio.h>
 #include<list>
 #include "SpaceShip.h"
@@ -12,70 +13,75 @@ void hideCursor();
 void limits();
 void gotoXY(int, int);
 
+// COULD: make a Game class to monitor all the objects on the inside without having to pass a SpaceShip to asteroid 
+
 int main()
 {
 	hideCursor();
 	limits();
-	SHIP vessel(30,30, 3, 3);
+	SpaceShip vessel(30,30, 3, 3);
 	vessel.paint();
 	vessel.paint_hearts();
 
-	list<AST*> A;
-	list<AST*>::iterator itA;
+	list<AST*> ast;
+	list<AST*>::iterator itAst;
 	for (int i = 0; i < 4; i++) {
-		A.push_back(new AST(3 + rand() % 75, 4 + rand() % 4));
+		ast.push_back(new AST(3 + rand() % 75, 4 + rand() % 4));
 	}
-	list<BULLET*> B;
-	list<BULLET*>::iterator itB;
+	list<Bullet*> bullet;
+	list<Bullet*>::iterator itBullet;
 
 	int points=0;
-	int game_over = 0;
-	while (game_over == 0)
+	bool game_over = false;
+	while (!game_over)
 	{
 		gotoXY(3, 34); printf("Puntos: %d", points);
 
 		if (_kbhit()) {
 			char key = _getch();
 			if (key == 'f') {
-				B.push_back(new BULLET(vessel.X() + 2, vessel.Y() - 1));
+				bullet.push_back(new Bullet(vessel.X() + 2, vessel.Y() - 1));
 			}
 		}
 
-		for (itB = B.begin(); itB != B.end();) {
-			(*itB)->move(); //list element access
-			if ((*itB)->out()) {
-				gotoXY((*itB)->X(), 4); printf(" ");
-				delete(*itB);
-				itB = B.erase(itB);
+		for (itBullet = bullet.begin(); itBullet != bullet.end();) {
+			(*itBullet)->move(); //list element access
+			if ((*itBullet)->out()) {
+				gotoXY((*itBullet)->X(), 4); printf(" ");
+				delete(*itBullet);
+				itBullet = bullet.erase(itBullet);
 			}
-			else itB++; //if it deletes an element, you don't have to iterate, since it will automatically pointing to the next
+			else itBullet++; //if it deletes an element, you don't have to iterate, since it will automatically pointing to the next
 		}
 
-		for (itA = A.begin(); itA != A.end(); itA++) {
-			(*itA)->move();
-			(*itA)->collision(vessel);
+		for (itAst = ast.begin(); itAst != ast.end(); itAst++) {
+			(*itAst)->move();
+			(*itAst)->collision(vessel);
 		}
 
-		for (itA = A.begin(); itA != A.end();itA++) {
-			for (itB = B.begin(); itB != B.end();) {
-				if ((*itA)->X() == (*itB)->X() && (((*itA)->Y() == (*itB)->Y() + 1) || ((*itA)->Y() == (*itB)->Y())))
+		for (itAst = ast.begin(); itAst != ast.end();itAst++) {
+			for (itBullet = bullet.begin(); itBullet != bullet.end();) {
+				if ((*itAst)->X() == (*itBullet)->X() && (((*itAst)->Y() == (*itBullet)->Y() + 1) || ((*itAst)->Y() == (*itBullet)->Y())))
 				{
-					gotoXY((*itB)->X(), (*itB)->Y()); printf(" ");
-					delete(*itB);
-					itB = B.erase(itB);
+					gotoXY((*itBullet)->X(), (*itBullet)->Y()); printf(" ");
+					delete(*itBullet);
+					itBullet = bullet.erase(itBullet);
 					points++;
-					gotoXY((*itA)->X(), (*itA)->Y()); printf(" ");
-					(*itA)->changeX(3 + rand() % 75);
-					(*itA)->changeY(4);
+					gotoXY((*itAst)->X(), (*itAst)->Y()); printf(" ");
+					(*itAst)->changeX(3 + rand() % 75);
+					(*itAst)->changeY(4);
 				}
-				else itB++; 
+				else itBullet++; 
 			}
 		}
 
 		game_over = vessel.die(); //checks if hearts == 0
 		vessel.move();
-		Sleep(30); //stops the program for 30ms
+		Sleep(20); //stops the program for 30ms
 	}
+
+	printf("\n\n\n\n\n");
+	system("PAUSE");
 
 	return 0;
 }

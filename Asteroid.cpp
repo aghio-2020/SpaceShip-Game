@@ -10,7 +10,7 @@ AST::AST(int px, int py)
 	x = px; y = py;
 }
 
-void AST::collision(class SHIP &N)
+void AST::collision(SpaceShip &N)
 {
 	if (x >= N.X() && x < N.X()+5 && y > N.Y() && y <= N.Y()+2) 
 	{
